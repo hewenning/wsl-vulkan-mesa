@@ -133,6 +133,24 @@ wsi_x11_connection_create(struct wsi_device *wsi_dev,
                 VK_SYSTEM_ALLOCATION_SCOPE_INSTANCE);
    if (!wsi_conn)
       return NULL;
+   
+   int  vendor_length = xcb_setup_vendor_length (xcb_get_setup (conn));
+   char vendor [256] = "";
+
+   if (vendor_length > 0 && vendor_length < sizeof (vendor)) {
+      memcpy (vendor, xcb_setup_vendor (xcb_get_setup (conn)), vendor_length);
+      vendor[vendor_length] = '\0';
+
+      // vendor name for VcXsrv is "HC-Consult"
+      if (strcmp(vendor, "HC-Consult") == 0) {
+            wsi_conn->has_dri3 = true;
+            wsi_conn->has_present = true;
+            //wsi_conn->has_dri3_modifiers = true;
+            wsi_conn->is_proprietary_x11 = true;
+
+            return wsi_conn;
+      }
+   }
 
    dri3_cookie = xcb_query_extension(conn, 4, "DRI3");
    pres_cookie = xcb_query_extension(conn, 7, "Present");
