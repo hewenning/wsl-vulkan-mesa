@@ -133,8 +133,9 @@ wsi_x11_connection_create(struct wsi_device *wsi_dev,
                 VK_SYSTEM_ALLOCATION_SCOPE_INSTANCE);
    if (!wsi_conn)
       return NULL;
-   
-   int  vendor_length = xcb_setup_vendor_length (xcb_get_setup (conn));
+
+   // add codes to identify VcXsrv Windows X server
+   int   vendor_length = xcb_setup_vendor_length (xcb_get_setup (conn));
    char vendor [256] = "";
 
    if (vendor_length > 0 && vendor_length < sizeof (vendor)) {
@@ -143,6 +144,8 @@ wsi_x11_connection_create(struct wsi_device *wsi_dev,
 
       // vendor name for VcXsrv is "HC-Consult"
       if (strcmp(vendor, "HC-Consult") == 0) {
+            fprintf(stdout, "VcXsrv Windows X display server found.\n");
+
             wsi_conn->has_dri3 = true;
             wsi_conn->has_present = true;
             //wsi_conn->has_dri3_modifiers = true;
