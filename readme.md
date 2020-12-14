@@ -6,6 +6,9 @@ This repo (https://github.com/gnsmrky/mesa-wsl) is based on [mesa3d repo 20.3](h
 
 The original `lavapipe` does not support Windows Subsystem for Linux (WSL) in Windows 10.  This repo adds workarounds to allow `lavapipe` to work in WSL and display via VcXsrv (a XDisplay server for Windows).
 
+## Pre-built binaries
+(WIP)
+
 ## Build WSL with Ubuntu 18.04 or 20.04
 Open WSL with Ubuntu 18.04 or 20.04.
 
@@ -44,7 +47,7 @@ Open WSL with Ubuntu 18.04 or 20.04.
 1. #### In `build` folder, config & build mesa.
    - This sets the target folder at `~/mesa_local`.
      ```
-     meson -Dprefix=~/mesa_local -Ddri-drivers= -Dglx=dri -Dllvm=enabled \
+     meson -Dprefix=~/mesa-local -Ddri-drivers= -Dglx=dri -Dllvm=enabled \
      -Ddri-driver-path=/usr/local/lib/x86_64-linux-gnu/dri \
      -Dgallium-drivers="swrast" -Dplatforms=x11 -Dosmesa=gallium \
      -Dvulkan-drivers=swrast ..
@@ -52,7 +55,7 @@ Open WSL with Ubuntu 18.04 or 20.04.
    - Build mesa  
      `ninja`
 
-   - Install mesa to target folder `~/mesa_local`.  
+   - Install mesa to target folder `~/mesa-local`.  
      `ninja install`
 
 1. #### Install mesa to WSL.
@@ -66,8 +69,8 @@ Open WSL with Ubuntu 18.04 or 20.04.
      - Set `Display number` to `1`.
      - Select `Start no client` (should be default setting).
      - Disable `Native opengl`.
-   - In WSL, set `Display` envar to `1`.  
-     `export Display=:1`
+   - In WSL, set `DISPLAY` envar to `1`.  
+     `export DISPLAY=:1`
 
 1. #### Validate and run Vulkan tools.
    - On WSL Ubuntu 18.04, install and run `vulkaninfo`   
@@ -108,5 +111,11 @@ Open WSL with Ubuntu 18.04 or 20.04.
         driverName         = llvmpipe
      ```
 
-     - Also run `vkcube`
+     - Also run `vkcube`   
      ![alt text](./vulkan-wsl/vkcube_ubuntu2004.png)
+
+## References
+1. `lavapipe` FAQ: [lavapipe: a *software* swrast vulkan layer FAQ
+August 20, 2020](https://airlied.blogspot.com/2020/08/vallium-software-swrast-vulkan-layer-faq.html)
+
+1. 
