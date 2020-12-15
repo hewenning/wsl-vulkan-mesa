@@ -23,7 +23,7 @@ Open WSL with Ubuntu 18.04 or 20.04.
    libxxf86vm-dev x11-xserver-utils libxrandr-dev
    ```
    
-1. #### Setup python in WSL.
+1. #### Setup python in WSL
    - Environment vars   
      ```
      alias python=python3 &&
@@ -47,7 +47,7 @@ Open WSL with Ubuntu 18.04 or 20.04.
 1. #### In `build` folder, config & build mesa.
    - This sets the target folder at `~/mesa_local`.
      ```
-     meson -Dprefix=~/mesa-local -Ddri-drivers= -Dglx=dri -Dllvm=enabled \
+     meson -Dprefix=/usr -Ddri-drivers= -Dglx=dri -Dllvm=enabled \
      -Ddri-driver-path=/usr/local/lib/x86_64-linux-gnu/dri \
      -Dgallium-drivers="swrast" -Dplatforms=x11 -Dosmesa=gallium \
      -Dvulkan-drivers=swrast ..
@@ -56,12 +56,12 @@ Open WSL with Ubuntu 18.04 or 20.04.
      `ninja`
 
    - Install mesa to target folder `~/mesa-local`.  
-     `ninja install`
+     `DESTDIR=~/mesa-local ninja install`
 
 1. #### Install mesa to WSL.
    - Copy mesa build files from `~/mesa-local` to `/usr` folder.  
      Warning: This will replace mesa files in WSL!  
-     `sudo copy -R ~/mesa-local /usr`
+     `sudo cp -R ~/mesa-local/usr/* /usr`
 
 1. #### Config `VcXsrv` for WSL Vulkan.
    - Launch `VcXsrv` on Windows 10. Upon launching, set the following:  
