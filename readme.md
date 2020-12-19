@@ -58,12 +58,8 @@ Open WSL with Ubuntu 18.04 or 20.04.
    - Install mesa to target folder `~/mesa-local`.  
      `DESTDIR=~/mesa-local ninja install`
 
-1. #### Install mesa to WSL.
-   - Copy mesa build files from `~/mesa-local` to `/usr` folder.  
-     Warning: This will replace mesa files in WSL!  
-     `sudo cp -R ~/mesa-local/usr/* /usr`
-
-1. #### Config `VcXsrv` for WSL Vulkan.
+## Install mesa and run vulkan tools.
+1. #### Config `VcXsrv` for vulkan (also applies to OpenGL).
    - Launch `VcXsrv` on Windows 10. Upon launching, set the following:  
      - Select `Multiple window`.
      - Set `Display number` to `1`.
@@ -72,43 +68,36 @@ Open WSL with Ubuntu 18.04 or 20.04.
    - In WSL, set `DISPLAY` envar to `1`.  
      `export DISPLAY=:1`
 
+1. #### In WSL, copy mesa build files from `~/mesa-local` to `/usr` folder.  
+     Warning: This will replace mesa files in WSL!  
+     `sudo cp -R ~/mesa-local/usr/* /usr`
+
 1. #### Validate and run Vulkan tools.
-   - On WSL Ubuntu 18.04, install and run `vulkaninfo`   
+   - On WSL Ubuntu 18.04, install `vulkan-utils` and run `vulkaninfo`   
      ```
      sudo apt install vulkan-utils
-     vulkaninfo | grep llvmpipe
+     vulkaninfo | grep -i deviceName
      ```
 
      Returns the following:
      ```
      WARNING: lavapipe is not a conformant vulkan implementation, testing use only.
-                GPU id       : 0 (llvmpipe (LLVM 6.0.0, 256 bits))
-                GPU id       : 0 (llvmpipe (LLVM 6.0.0, 256 bits))
-                GPU id       : 0 (llvmpipe (LLVM 6.0.0, 256 bits))
-                GPU id       : 0 (llvmpipe (LLVM 6.0.0, 256 bits))
-                GPU id       : 0 (llvmpipe (LLVM 6.0.0, 256 bits))
-                GPU id       : 0 (llvmpipe (LLVM 6.0.0, 256 bits))
-     GPU id       : 0 (llvmpipe (LLVM 6.0.0, 256 bits))
-        deviceName     = llvmpipe (LLVM 6.0.0, 256 bits)
+     deviceName     = llvmpipe (LLVM 6.0.0, 256 bits)
      ```
      - Also `vulkan-smoketest`.  
      ![alt text](./vulkan-wsl/vulkan-smoketest_ubuntu1804.png)
 
-   - On WSL Ubuntu 20.04, install and run `vkcube`.  
+   - On WSL Ubuntu 20.04, install `vulkan-tools` and run `vkcube`.  
      ```
      sudo apt install vulkan-tools
-     vulkaninfo
+     vulkaninfo | grep -i deviceName
      ```
 
      Returns the following:
      ```
+     error: XDG_RUNTIME_DIR not set in the environment.
      WARNING: lavapipe is not a conformant vulkan implementation, testing use only.
-                GPU id  : 0 (llvmpipe (LLVM 10.0.0, 256 bits))
-                GPU id  : 0 (llvmpipe (LLVM 10.0.0, 256 bits))
-     GPU id : 0 (llvmpipe (LLVM 10.0.0, 256 bits)):
-                        llvmpipe (LLVM 10.0.0, 256 bits) (ID: 0)
-        deviceName     = llvmpipe (LLVM 10.0.0, 256 bits)
-        driverName         = llvmpipe
+     deviceName     = llvmpipe (LLVM 10.0.0, 256 bits)
      ```
 
      - Also run `vkcube`   
