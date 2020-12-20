@@ -1,8 +1,8 @@
 This is work in progress...
 
-## lavapipe for WSL
+## Valkan (lavapipe) for WSL
 
-This repo (https://github.com/gnsmrky/mesa-wsl) is based on [mesa3d repo 20.3](https://github.com/mesa3d/mesa/tree/20.3), the first official release includes `lavapipe`.  `lavapipe` is the Vulkan frontend in mesa that uses `llvmpipe` as software renderer.
+This repo (https://github.com/gnsmrky/mesa-wsl) is based on [mesa 20.3 repo](https://github.com/mesa3d/mesa/tree/20.3), the first official release includes `lavapipe`.  `lavapipe` is the Vulkan frontend in mesa that uses `llvmpipe` as software renderer.  mesa 20.3 is the 1st release that includes `lavapipe`.
 
 The original `lavapipe` does not support Windows Subsystem for Linux (WSL) in Windows 10.  This repo adds workarounds to allow `lavapipe` to work in WSL and display via VcXsrv.
 
@@ -11,7 +11,7 @@ This repo uses VcXsrv as Windows X Server on Windows 10.  Haven't tested with ot
 
 Download and install `VcXsrv` from https://sourceforge.net/projects/vcxsrv/.
 
-## Build mesa in WSL Ubuntu 18.04 or 20.04
+## Build mesa for WSL Ubuntu 18.04 or 20.04
 Open WSL with Ubuntu 18.04 or 20.04.
 
 1. #### Update and install needed packages for development.  
@@ -37,7 +37,7 @@ Open WSL with Ubuntu 18.04 or 20.04.
      `pip install meson ninja cmake mako`
 
 1. #### Get this repo and prepare for build env
-   - Get the repo  
+   - Get this repo  
      `git clone https://github.com/gnsmrky/mesa-wsl`
    - Change directory to the repo and create & change to `build` folder.
       ```
