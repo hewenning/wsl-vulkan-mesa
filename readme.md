@@ -89,9 +89,11 @@ Open WSL with Ubuntu 18.04 or 20.04.
    - In WSL, set `DISPLAY` envar to `1`.  
      `export DISPLAY=:1`
 
-1. In WSL, copy mesa build files from `~/mesa-local` to `/usr` folder.
-     Warning: This will replace mesa library files in WSL!  
+1. In WSL, copy mesa build files from `~/mesa-local` to `/usr` folder.  
+     Warning: This will replace mesa library files in WSL (mesa will be udpated from v20.0.8 to v20.3.0)!  
      `sudo cp -R ~/mesa-local/usr/* /usr`
+     - Check the mesa versio after copying files.  
+     `glxinfo -B | grep -i 'version string' | grep Mesa`
 
 1. Validate and run Vulkan tools.
    - On WSL Ubuntu 18.04, install `vulkan-utils` and run `vulkaninfo`   
@@ -105,7 +107,7 @@ Open WSL with Ubuntu 18.04 or 20.04.
      WARNING: lavapipe is not a conformant vulkan implementation, testing use only.
      deviceName     = llvmpipe (LLVM 6.0.0, 256 bits)
      ```
-     - Also `vulkan-smoketest`.  
+     - Run `vulkan-smoketest`.  
      ![alt text](./wsl-vulkan/vulkan-smoketest_ubuntu1804.png)
 
    - On WSL Ubuntu 20.04, install `vulkan-tools` and run `vkcube`.  
@@ -121,7 +123,7 @@ Open WSL with Ubuntu 18.04 or 20.04.
      deviceName     = llvmpipe (LLVM 10.0.0, 256 bits)
      ```
 
-     - Also run `vkcube`   
+     - Run `vkcube`   
      ![alt text](./wsl-vulkan/vkcube_ubuntu2004.png)
 
 ## References
