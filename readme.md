@@ -7,7 +7,7 @@ This repo (https://github.com/gnsmrky/wsl-vulkan-mesa) is based on [mesa 20.3 re
 The original `lavapipe` does not support Windows Subsystem for Linux (WSL) in Windows 10.  This repo adds workarounds to allow `lavapipe` to work in WSL and display via VcXsrv.
 
 ## Prerequsite - Windows X Server on Windows
-This repo uses VcXsrv as Windows X Server on Windows 10.  Haven't tested with other alternatives.  Pls leave your feedbacks in feedbacks if you reccommend others.
+This repo uses VcXsrv as Windows X Server on Windows 10.  Haven't tested with other X Server alternatives.  Pls leave your feedbacks in [`issues`](https://github.com/gnsmrky/wsl-vulkan-mesa/issues) if you reccommend others.
 
 Download and install `VcXsrv` from https://sourceforge.net/projects/vcxsrv/.
 
