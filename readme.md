@@ -8,7 +8,7 @@ The original `lavapipe` does not support Windows Subsystem for Linux (WSL) in Wi
 
 ## Prerequsite
 1. WSL Ubuntu 18.04.5 or 20.04.1
-1. Windows X Server on Windows
+1. VcXsrv for Windows - Windows X Sever  
    This repo uses VcXsrv as Windows X Server on Windows 10.  Haven't tested with other X Server alternatives.  Pls leave your feedbacks in [`issues`](https://github.com/gnsmrky/wsl-vulkan-mesa/issues) if you reccommend others.
    - Download and install `VcXsrv` from https://sourceforge.net/projects/vcxsrv/.
 
@@ -35,7 +35,7 @@ The original `lavapipe` does not support Windows Subsystem for Linux (WSL) in Wi
 ## Build mesa for WSL Ubuntu 18.04 or 20.04
 Open WSL with Ubuntu 18.04 or 20.04.
 
-1. #### Update and install needed packages for development.  
+1. Update and install needed packages for development.  
    ```
    sudo apt update
    
@@ -46,7 +46,7 @@ Open WSL with Ubuntu 18.04 or 20.04.
    libxxf86vm-dev x11-xserver-utils libxrandr-dev
    ```
    
-1. #### Setup python
+1. Setup python
    - Environment vars   
      ```
      alias python=python3 &&
@@ -57,7 +57,7 @@ Open WSL with Ubuntu 18.04 or 20.04.
    - Install python3 packages.  
      `pip install meson ninja cmake mako`
 
-1. #### Get this repo and prepare for build env
+1. Get this repo and prepare for build env
    - Get this repo  
      `git clone https://github.com/gnsmrky/wsl-vulkan-mesa`
    - Change directory to the repo and create & change to `build` folder.
@@ -67,7 +67,7 @@ Open WSL with Ubuntu 18.04 or 20.04.
       cd build
       ```
 
-1. #### In `build` folder, config & build mesa.
+1. In `build` folder, config & build mesa.
    - This sets the target folder at `/usr`.
      ```
      meson -Dprefix=/usr -Ddri-drivers= -Dglx=dri -Dllvm=enabled \
@@ -82,7 +82,7 @@ Open WSL with Ubuntu 18.04 or 20.04.
      `DESTDIR=~/mesa-local ninja install`
 
 ## Install mesa and run vulkan tools.
-1. #### Config `VcXsrv` for vulkan (also applies to OpenGL).
+1. Config `VcXsrv` for vulkan (also applies to OpenGL).
    - Launch `VcXsrv` on Windows 10. Upon launching, set the following:  
      - Select `Multiple window`.
      - Set `Display number` to `1`.
@@ -91,11 +91,11 @@ Open WSL with Ubuntu 18.04 or 20.04.
    - In WSL, set `DISPLAY` envar to `1`.  
      `export DISPLAY=:1`
 
-1. #### In WSL, copy mesa build files from `~/mesa-local` to `/usr` folder.
+1. In WSL, copy mesa build files from `~/mesa-local` to `/usr` folder.
      Warning: This will replace mesa library files in WSL!  
      `sudo cp -R ~/mesa-local/usr/* /usr`
 
-1. #### Validate and run Vulkan tools.
+1. Validate and run Vulkan tools.
    - On WSL Ubuntu 18.04, install `vulkan-utils` and run `vulkaninfo`   
      ```
      sudo apt install vulkan-utils
