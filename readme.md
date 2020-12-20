@@ -2,7 +2,7 @@ This is work in progress...
 
 ## Valkan (lavapipe) for WSL
 
-This repo (https://github.com/gnsmrky/wsl-vulkan-mesa) is based on [mesa 20.3 repo](https://github.com/mesa3d/mesa/tree/20.3), the first official release includes `lavapipe`.  `lavapipe` is the Vulkan frontend in mesa that uses `llvmpipe` as software renderer.  mesa 20.3 is the 1st release that includes `lavapipe`.
+This repo (https://github.com/gnsmrky/wsl-vulkan-mesa) is based on [mesa 20.3 repo](https://github.com/mesa3d/mesa/tree/20.3), the 1st official release includes `lavapipe`.  `lavapipe` is the Vulkan frontend in mesa that uses `llvmpipe` as software renderer.  
 
 The original `lavapipe` does not support Windows Subsystem for Linux (WSL) in Windows 10.  This repo adds workarounds to allow `lavapipe` to work in WSL and display via VcXsrv.
 
