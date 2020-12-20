@@ -16,7 +16,7 @@ The original `lavapipe` does not support Windows Subsystem for Linux (WSL) in Wi
     sudo apt update
     sudo apt install llvm libxcb-randr0 libxcb-shm0 libxcb-xfixes0
     ```
-2. Download tarball binaries from [Releases](./releases).
+2. Download tarball binaries from [Releases](/releases).
 3. Extract to `~/mesa-local` folder
    - Ubuntu 18.04
      ```
