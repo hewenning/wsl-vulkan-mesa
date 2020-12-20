@@ -127,5 +127,3 @@ Open WSL with Ubuntu 18.04 or 20.04.
 ## References
 1. `lavapipe` FAQ: [lavapipe: a *software* swrast vulkan layer FAQ
 August 20, 2020](https://airlied.blogspot.com/2020/08/vallium-software-swrast-vulkan-layer-faq.html)
-
-1. 
