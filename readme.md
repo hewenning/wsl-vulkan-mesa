@@ -6,10 +6,31 @@ This repo (https://github.com/gnsmrky/wsl-vulkan-mesa) is based on [mesa 20.3 re
 
 The original `lavapipe` does not support Windows Subsystem for Linux (WSL) in Windows 10.  This repo adds workarounds to allow `lavapipe` to work in WSL and display via VcXsrv.
 
-## Prerequsite - Windows X Server on Windows
-This repo uses VcXsrv as Windows X Server on Windows 10.  Haven't tested with other X Server alternatives.  Pls leave your feedbacks in [`issues`](https://github.com/gnsmrky/wsl-vulkan-mesa/issues) if you reccommend others.
+## Prerequsite
+1. WSL Ubuntu 18.04.5 or 20.04.1
+1. Windows X Server on Windows
+   This repo uses VcXsrv as Windows X Server on Windows 10.  Haven't tested with other X Server alternatives.  Pls leave your feedbacks in [`issues`](https://github.com/gnsmrky/wsl-vulkan-mesa/issues) if you reccommend others.
+   - Download and install `VcXsrv` from https://sourceforge.net/projects/vcxsrv/.
 
-Download and install `VcXsrv` from https://sourceforge.net/projects/vcxsrv/.
+## Pre-built releases
+1. Install required packages
+    ```
+    sudo apt update
+    sudo apt install llvm libxcb-randr0 libxcb-shm0 libxcb-xfixes0
+    ```
+2. Download tarball binaries from [Releases](./releases).
+3. Extract to `~/mesa-local` folder
+   - Ubuntu 18.04
+     ```
+     mkdir ~/mesa-local
+     tar xzvf wsl-ubuntu1804-vulkan-mesa20.3-20201220.tar.gz -C ~/mesa-local
+     ```
+   - Ubuntu 20.04
+     ```
+     mkdir ~/mesa-local
+     tar xzvf wsl-ubuntu2004-vulkan-mesa20.3-20201220.tar.gz -C ~/mesa-local
+     ```
+4. Follow [Instsall mesa and run vulkan tools](#install-mesa-and-run-vulkan-tools) to install and run vulkan
 
 ## Build mesa for WSL Ubuntu 18.04 or 20.04
 Open WSL with Ubuntu 18.04 or 20.04.
