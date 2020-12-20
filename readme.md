@@ -2,7 +2,7 @@ This is work in progress...
 
 ## Valkan (lavapipe) for WSL
 
-This repo (https://github.com/gnsmrky/mesa-wsl) is based on [mesa 20.3 repo](https://github.com/mesa3d/mesa/tree/20.3), the first official release includes `lavapipe`.  `lavapipe` is the Vulkan frontend in mesa that uses `llvmpipe` as software renderer.  mesa 20.3 is the 1st release that includes `lavapipe`.
+This repo (https://github.com/gnsmrky/wsl-vulkan-mesa) is based on [mesa 20.3 repo](https://github.com/mesa3d/mesa/tree/20.3), the first official release includes `lavapipe`.  `lavapipe` is the Vulkan frontend in mesa that uses `llvmpipe` as software renderer.  mesa 20.3 is the 1st release that includes `lavapipe`.
 
 The original `lavapipe` does not support Windows Subsystem for Linux (WSL) in Windows 10.  This repo adds workarounds to allow `lavapipe` to work in WSL and display via VcXsrv.
 
@@ -38,16 +38,16 @@ Open WSL with Ubuntu 18.04 or 20.04.
 
 1. #### Get this repo and prepare for build env
    - Get this repo  
-     `git clone https://github.com/gnsmrky/mesa-wsl`
+     `git clone https://github.com/gnsmrky/wsl-vulkan-mesa`
    - Change directory to the repo and create & change to `build` folder.
       ```
-      cd mesa-wsl
+      cd wsl-vulkan-mesa
       mkdir build
       cd build
       ```
 
 1. #### In `build` folder, config & build mesa.
-   - This sets the target folder at `~/mesa_local`.
+   - This sets the target folder at `/usr`.
      ```
      meson -Dprefix=/usr -Ddri-drivers= -Dglx=dri -Dllvm=enabled \
      -Ddri-driver-path=/usr/local/lib/x86_64-linux-gnu/dri \
@@ -87,7 +87,7 @@ Open WSL with Ubuntu 18.04 or 20.04.
      deviceName     = llvmpipe (LLVM 6.0.0, 256 bits)
      ```
      - Also `vulkan-smoketest`.  
-     ![alt text](./vulkan-wsl/vulkan-smoketest_ubuntu1804.png)
+     ![alt text](./wsl-vulkan/vulkan-smoketest_ubuntu1804.png)
 
    - On WSL Ubuntu 20.04, install `vulkan-tools` and run `vkcube`.  
      ```
@@ -103,7 +103,7 @@ Open WSL with Ubuntu 18.04 or 20.04.
      ```
 
      - Also run `vkcube`   
-     ![alt text](./vulkan-wsl/vkcube_ubuntu2004.png)
+     ![alt text](./wsl-vulkan/vkcube_ubuntu2004.png)
 
 ## References
 1. `lavapipe` FAQ: [lavapipe: a *software* swrast vulkan layer FAQ
